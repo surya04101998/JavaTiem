@@ -1,17 +1,11 @@
-name: CI
+const yargs=require('yargs')
+const fs=require('fs')
+const books={
+  'title': 'Does this matter?',
+  'author':'lel'
+}
 
-on: [push]
+json=JSON.stringify(books)
+fs.writeFileSync("1-json.json",json)
 
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+jsonBuffer=fs.readFileSync("1-json.json")
